@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ProductDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgView_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:contentDescription="Product Image"
+            android:scaleType="centerCrop"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_edts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_below="@id/imgView_product_image">
+
+            <EditText
+                android:id="@+id/edt_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên sản phẩm"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Thông tin chi tiết"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:layout_marginBottom="10dp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Giá tiền"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_product_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Số lượng"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:layout_marginBottom="20dp"
+                android:inputType="none"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danh mục"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spinner_category_in_productDetail"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cửa hàng"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spinner_store_in_productDetail"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/btn_insert_productImage"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/navy"
+                android:text="Thêm avatar"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@id/layout_edts">
+
+            <Button
+                android:id="@+id/btn_product_edit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:backgroundTint="@color/navy"
+                android:text="Edit"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_product_delete"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Delete"
+                android:visibility="gone"
+                android:backgroundTint="@color/red"
+                android:textSize="20sp"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_product_exit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Exit"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_product_done"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="DONE"
+                android:backgroundTint="@color/green"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_product_insert"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="INSERT"
+                android:backgroundTint="@color/green"
+                android:textSize="20sp"
+                android:visibility="visible"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

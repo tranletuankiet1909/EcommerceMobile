@@ -1,0 +1,198 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/text_viewProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:text="Stylish Plaid Shirt"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_viewProductPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="35000"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="10dp"
+                android:text="VND"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Số lượng: "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/text_viewProductQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/button_favorite_productDetail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_outlined_favorite_24"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/red"
+            android:contentDescription="favorite button"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_store_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgView_store_product"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_margin="16dp"
+                    android:padding="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:layout_marginVertical="16dp"
+                    android:padding="8dp"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:id="@+id/txtView_storeName_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Awesome Fashion Store"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="#000000"/>
+
+                    <TextView
+                        android:id="@+id/txtView_storeAddress_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Viet Nam"
+                        android:layout_marginTop="8dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/navy"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Mô tả sản phẩm"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:textColor="@color/navy"/>
+
+        <TextView
+            android:id="@+id/text_viewProductDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:layout_marginVertical="10dp"
+            android:paddingStart="0dp"
+            android:text="Mo ta sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/lightgrey"/>
+
+        <TextView
+            android:id="@+id/tvCommentsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đánh giá"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/darkpurple"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewComments"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginVertical="15dp"
+            android:background="#F0F0F0"/>
+
+
+        <Button
+            android:id="@+id/btn_addToCart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/orange"
+            android:text="Add to Cart"/>
+
+
+    </LinearLayout>
+</ScrollView>

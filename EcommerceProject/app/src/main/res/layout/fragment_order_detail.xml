@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.OrderDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtView_OrderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="Đơn hàng" />
+
+        <LinearLayout
+            android:id="@+id/layout_edts_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/txtView_OrderTitle"
+            android:padding="20dp">
+
+            <EditText
+                android:id="@+id/edt_order_buyer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên khách hàng"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_order_store_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Tên cửa hàng"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_order_product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Tên sản phẩm"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_order_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Số lượng"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_order_totalPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Tổng tiền"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Trạng thái đơn hàng"/>
+
+            <Spinner
+                android:id="@+id/spinner_role_in_orderDetail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_edts_order"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_order_edit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:backgroundTint="@color/navy"
+                android:text="Edit"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_order_delete"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Delete"
+                android:backgroundTint="@color/red"
+                android:textSize="20sp"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_order_exit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Exit"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_order_done"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="DONE"
+                android:backgroundTint="@color/green"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

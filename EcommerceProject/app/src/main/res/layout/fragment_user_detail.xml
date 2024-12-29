@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.UserDetailFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgView_user_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:contentDescription="Product Image"
+            android:scaleType="centerCrop"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_edts_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_below="@id/imgView_user_avatar">
+
+            <EditText
+                android:id="@+id/edt_user_userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên người dùng"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_user_fullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Họ tên người dùng"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:layout_marginBottom="10dp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:inputType="none"/>
+
+            <EditText
+                android:id="@+id/edt_product_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Số lượng"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:layout_marginBottom="20dp"
+                android:inputType="none"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vai trò"
+                android:textColor="@color/black"
+                android:textSize="22sp"/>
+            <Spinner
+                android:id="@+id/spinner_role_in_userDetail"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="10dp"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_below="@id/layout_edts_user">
+
+            <Button
+                android:id="@+id/btn_user_edit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:backgroundTint="@color/navy"
+                android:text="Edit"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_user_delete"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Delete"
+                android:backgroundTint="@color/red"
+                android:textSize="20sp"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_user_exit"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Exit"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_user_done"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="DONE"
+                android:backgroundTint="@color/green"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

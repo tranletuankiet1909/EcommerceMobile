@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".fragment.CategoryDetailFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="Danh mục" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/edt_category_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên danh mục"
+            android:textSize="22sp"
+            android:inputType="none"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_category_edit"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:backgroundTint="@color/navy"
+            android:visibility="gone"
+            android:text="Edit"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btn_category_delete"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="Delete"
+            android:backgroundTint="@color/red"
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btn_category_exit"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="Exit"
+            android:visibility="gone"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btn_category_done"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="DONE"
+            android:backgroundTint="@color/green"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:id="@+id/btn_category_insert"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:text="INSERT"
+            android:backgroundTint="@color/green"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
