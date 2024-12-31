@@ -17,14 +17,17 @@ import android.widget.TextView;
 
 import com.example.ecommerce.R;
 import com.example.ecommerce.adapter.CategoryAdminAdapter;
+import com.example.ecommerce.adapter.OrderAdminAdapter;
 import com.example.ecommerce.adapter.ProductAdminAdapter;
 import com.example.ecommerce.adapter.StoreAdapter;
 import com.example.ecommerce.adapter.StoreAdminAdapter;
 import com.example.ecommerce.dao.CategoryDAO;
+import com.example.ecommerce.dao.OrderDAO;
 import com.example.ecommerce.dao.ProductDAO;
 import com.example.ecommerce.dao.StoreDAO;
 import com.example.ecommerce.entity.Category;
 import com.example.ecommerce.entity.Product;
+import com.example.ecommerce.entity.PurchaseOrder;
 import com.example.ecommerce.entity.Store;
 
 import java.util.ArrayList;
@@ -97,6 +100,7 @@ public class AdminDashboardFragment extends Fragment {
         btnInsert.setOnClickListener(v -> {
             openInsertFragment("category");
         });
+        recyclerView.setNestedScrollingEnabled(false);
         loadRecyclerViewData("category");
         setUpListeners();
         return view;
@@ -104,23 +108,28 @@ public class AdminDashboardFragment extends Fragment {
 
     private void setUpListeners() {
         cardCate.setOnClickListener(v -> {
+            btnInsert.setVisibility(View.VISIBLE);
             loadRecyclerViewData("category");
             txtViewTitle.setText("Category");
         });
         cardStore.setOnClickListener(v -> {
+            btnInsert.setVisibility(View.VISIBLE);
             loadRecyclerViewData("store");
             txtViewTitle.setText("Store");
         });
         cardProduct.setOnClickListener(v -> {
+            btnInsert.setVisibility(View.VISIBLE);
             loadRecyclerViewData("product");
             txtViewTitle.setText("Product");
 
         });
         cardUser.setOnClickListener(v -> {
+            btnInsert.setVisibility(View.VISIBLE);
             loadRecyclerViewData("user");
             txtViewTitle.setText("User");
         });
         cardOrder.setOnClickListener(v -> {
+            btnInsert.setVisibility(View.GONE);
             loadRecyclerViewData("order");
             txtViewTitle.setText("Order");
         });
@@ -191,6 +200,25 @@ public class AdminDashboardFragment extends Fragment {
                 btnInsert.setOnClickListener(v -> {openInsertFragment(type);});
                 productDAO.close();
                 break;
+            case "order":
+                List<PurchaseOrder> orders = new ArrayList<>();
+                OrderDAO orderDAO = new OrderDAO(this.getContext());
+                orderDAO.open();
+                orders = orderDAO.getOrders();
+
+                OrderAdminAdapter orderAdminAdapter = new OrderAdminAdapter(orders, order -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("order", order);
+                    OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
+                    orderDetailFragment.setArguments(bundle);
+                    replaceFragment(orderDetailFragment);
+                });
+
+                recyclerView.setAdapter(orderAdminAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                btnInsert.setOnClickListener(v -> {openInsertFragment(type);});
+                orderDAO.close();
+                break;
 
         }
 
@@ -206,6 +234,9 @@ public class AdminDashboardFragment extends Fragment {
                 insertFragment = new StoreDetailFragment();
                 break;
             case "product":
+                insertFragment = new ProductDetailFragment();
+                break;
+            case "order":
                 insertFragment = new ProductDetailFragment();
                 break;
             default:

@@ -3,12 +3,21 @@ package com.example.ecommerce.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.UserManager;
+import com.example.ecommerce.adapter.OrderAdapter;
+import com.example.ecommerce.dao.OrderDAO;
+import com.example.ecommerce.entity.OrderStatus;
+import com.example.ecommerce.entity.PurchaseOrder;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +25,7 @@ import com.example.ecommerce.R;
  * create an instance of this fragment.
  */
 public class ReviewOrderFragment extends Fragment {
-
+    private RecyclerView recyclerView_orderDone;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +69,14 @@ public class ReviewOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review_order, container, false);
+        View view = inflater.inflate(R.layout.fragment_review_order, container, false);
+        recyclerView_orderDone = view.findViewById(R.id.recyclerView_orderDone);
+        OrderDAO orderDAO = new OrderDAO(this.getContext());
+        orderDAO.open();
+        List<PurchaseOrder> ongoingOrderList = orderDAO.getOrderByStatusAndUserId(UserManager.getInstance().getUserId(), OrderStatus.DONE.getDisplayName());
+        OrderAdapter orderAdapter = new OrderAdapter(ongoingOrderList, this.getContext());
+        recyclerView_orderDone.setAdapter(orderAdapter);
+        recyclerView_orderDone.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        return view;
     }
 }

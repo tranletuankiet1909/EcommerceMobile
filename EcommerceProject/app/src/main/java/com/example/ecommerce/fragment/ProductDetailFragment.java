@@ -313,15 +313,16 @@ public class ProductDetailFragment extends Fragment {
         });
 
         // set event click exit
-        String oldName = edt_productName.getText().toString().trim();
-        String oldDescription = edt_productDescription.getText().toString().trim();
-        String oldPrice = edt_productPrice.getText().toString().trim();
-        int oldQuanity = Integer.parseInt(edt_productQuantity.getText().toString().trim());
         btn_productExit.setOnClickListener(v -> {
+            String oldName = edt_productName.getText().toString().trim();
+            String oldDescription = edt_productDescription.getText().toString().trim();
+            String oldPrice = edt_productPrice.getText().toString().trim();
+            int oldQuantity = Integer.parseInt(edt_productQuantity.getText().toString().trim());
+
             edt_productName.setText(oldName);
             edt_productDescription.setText(oldDescription);
             edt_productPrice.setText(oldPrice);
-            edt_productQuantity.setText(String.valueOf(oldQuanity));
+            edt_productQuantity.setText(String.valueOf(oldQuantity));
 
             edt_productName.setEnabled(false);
             edt_productDescription.setEnabled(false);

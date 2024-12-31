@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,15 @@ public class WishlistFragment extends Fragment {
         }
     }
 
+    private void replaceFragment(Fragment fragment) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_layout, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,8 +100,12 @@ public class WishlistFragment extends Fragment {
             }
 
             ProductAdapter mAdapter = new ProductAdapter(products, product -> {
-
-            }, true);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("product", product);
+                ProductDetailBuyerFragment productDetailBuyerFragment = new ProductDetailBuyerFragment();
+                productDetailBuyerFragment.setArguments(bundle);
+                replaceFragment(productDetailBuyerFragment);
+            }, false);
             recycler_wishlist.setAdapter(mAdapter);
             recycler_wishlist.setLayoutManager(new GridLayoutManager(this.getActivity(), 2));
         } else {

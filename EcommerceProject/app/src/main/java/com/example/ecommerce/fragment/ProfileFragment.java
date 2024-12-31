@@ -102,20 +102,28 @@ public class ProfileFragment extends Fragment {
 
         mPendingOrderLayout.setOnClickListener(v -> {
             Intent i = new Intent(this.getActivity(), OrdersActivity.class);
+            i.putExtra("order_type", "PENDING");
             startActivity(i);
         });
+
         mOngoingOrderLayout.setOnClickListener(v -> {
             Intent i = new Intent(this.getActivity(), OrdersActivity.class);
+            i.putExtra("order_type", "ONGOING");
             startActivity(i);
         });
+
         mShippingOrderLayout.setOnClickListener(v -> {
             Intent i = new Intent(this.getActivity(), OrdersActivity.class);
+            i.putExtra("order_type", "SHIPPING");
             startActivity(i);
         });
+
         mReviewOrderLayout.setOnClickListener(v -> {
             Intent i = new Intent(this.getActivity(), OrdersActivity.class);
+            i.putExtra("order_type", "REVIEW");
             startActivity(i);
         });
+
 
         return view;
     }

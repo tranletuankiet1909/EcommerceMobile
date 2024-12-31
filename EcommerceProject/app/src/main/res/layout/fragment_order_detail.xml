@@ -46,23 +46,11 @@
                 android:textSize="22sp"
                 android:inputType="none"/>
 
-            <EditText
-                android:id="@+id/edt_order_product_name"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_orderDetail_admin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="Tên sản phẩm"
-                android:textSize="22sp"
-                android:inputType="none"/>
-
-            <EditText
-                android:id="@+id/edt_order_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="Số lượng"
-                android:textSize="22sp"
-                android:inputType="none"/>
+                android:layout_marginVertical="10dp"/>
 
             <EditText
                 android:id="@+id/edt_order_totalPrice"
@@ -82,7 +70,7 @@
                 android:text="Trạng thái đơn hàng"/>
 
             <Spinner
-                android:id="@+id/spinner_role_in_orderDetail"
+                android:id="@+id/spinner_status_in_order"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"/>

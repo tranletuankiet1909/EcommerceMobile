@@ -42,6 +42,27 @@ public class OrdersActivity extends AppCompatActivity {
                     break;
             }
         }).attach();
+        String orderType = getIntent().getStringExtra("order_type");
+        if (orderType != null) {
+            int tabIndex = getTabIndex(orderType);
+            if (tabIndex != -1) {
+                mViewPager.setCurrentItem(tabIndex, false);
+            }
+        }
+    }
 
+    private int getTabIndex(String orderType) {
+        switch (orderType) {
+            case "PENDING":
+                return 0;
+            case "ONGOING":
+                return 1;
+            case "SHIPPING":
+                return 2;
+            case "REVIEW":
+                return 3;
+            default:
+                return -1;
+        }
     }
 }

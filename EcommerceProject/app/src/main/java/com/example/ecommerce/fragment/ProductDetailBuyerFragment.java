@@ -19,7 +19,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.ecommerce.R;
 import com.example.ecommerce.UserManager;
+import com.example.ecommerce.dao.CartDAO;
 import com.example.ecommerce.dao.FavoriteDAO;
+import com.example.ecommerce.entity.Cart;
 import com.example.ecommerce.entity.Product;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -144,21 +146,45 @@ public class ProductDetailBuyerFragment extends Fragment {
             int productId = product.getId();
 
             if (favoriteDAO.isFavorite(productId, userId)) {
-                boolean result = favoriteDAO.deleteProductFromWishList(userId, productId);
+                boolean result = favoriteDAO.deleteProductFromWishList(productId, userId);
                 if (result) {
                     imageButton_favorite.setImageResource(R.drawable.ic_outlined_favorite_24);
                 } else {
                     Toast.makeText(getContext(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                boolean result = favoriteDAO.insertProductToWishlist(userId, productId);
-                Log.d(TAG, "userId: " +String.valueOf(userId) + " productId: " + String.valueOf(productId));
+                boolean result = favoriteDAO.insertProductToWishlist(productId, userId);
+                Log.d(TAG, "userId: " + String.valueOf(userId) + " productId: " + String.valueOf(productId));
                 if (result) {
                     imageButton_favorite.setImageResource(R.drawable.ic_baseline_favorite_24);
                 } else {
                     Toast.makeText(getContext(), "Thêm vào yêu thích thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+
+        btnAddToCart.setOnClickListener(v -> {
+            Cart cart = new Cart(1, true, UserManager.getInstance().getCurrentUser(), product);
+            CartDAO cartDAO = new CartDAO(this.getContext());
+            cartDAO.open();
+            if (cartDAO.isExistProductInCartOfUser(UserManager.getInstance().getCurrentUser().getId(), product.getId())) {
+                Cart newCart = cartDAO.getCartByUserAndProduct(UserManager.getInstance().getCurrentUser().getId(), product.getId());
+                newCart.setQuantity(newCart.getQuantity()+1);
+                boolean result = cartDAO.updateCart(newCart);
+                if (result) {
+                    Toast.makeText(this.getContext(), "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this.getContext(), "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                boolean result = cartDAO.insertCart(cart);
+                if (result) {
+                    Toast.makeText(this.getContext(), "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this.getContext(), "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+            cartDAO.close();
         });
 
         return view;

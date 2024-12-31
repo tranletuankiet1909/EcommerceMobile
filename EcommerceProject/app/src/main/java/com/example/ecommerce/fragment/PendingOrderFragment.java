@@ -3,12 +3,22 @@ package com.example.ecommerce.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ecommerce.R;
+import com.example.ecommerce.UserManager;
+import com.example.ecommerce.adapter.OrderAdapter;
+import com.example.ecommerce.dao.OrderDAO;
+import com.example.ecommerce.entity.OrderStatus;
+import com.example.ecommerce.entity.PurchaseOrder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +26,7 @@ import com.example.ecommerce.R;
  * create an instance of this fragment.
  */
 public class PendingOrderFragment extends Fragment {
-
+    private RecyclerView recyclerView_orderPending;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +70,14 @@ public class PendingOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pending_order, container, false);
+        View view = inflater.inflate(R.layout.fragment_pending_order, container, false);
+        recyclerView_orderPending = view.findViewById(R.id.recyclerView_orderPending);
+        OrderDAO orderDAO = new OrderDAO(this.getContext());
+        orderDAO.open();
+        List<PurchaseOrder> pendingOrderList = orderDAO.getOrderByStatusAndUserId(UserManager.getInstance().getUserId(), OrderStatus.PENDING.getDisplayName());
+        OrderAdapter orderAdapter = new OrderAdapter(pendingOrderList, this.getContext());
+        recyclerView_orderPending.setAdapter(orderAdapter);
+        recyclerView_orderPending.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        return view;
     }
 }

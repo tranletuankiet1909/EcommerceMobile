@@ -227,10 +227,7 @@ public class HomeFragment extends Fragment {
                 filteredProducts.add(product);
             }
         }
-
         productAdapter.updateProductList(filteredProducts);
-
-
         Toast.makeText(this.getContext(), "Đang hiển thị sản phẩm từ: " + store.getName(), Toast.LENGTH_SHORT).show();
     }
 
@@ -241,9 +238,8 @@ public class HomeFragment extends Fragment {
                 int currentItem = bannerCarousel.getCurrentItem();
                 int nextItem = currentItem + 1 < bannerImages.size() ? currentItem + 1 : 0;
                 bannerCarousel.setCurrentItem(nextItem, true);
-
                 // Lặp lại
-                bannerCarousel.postDelayed(this, 3000); // 3000ms = 3 giây
+                bannerCarousel.postDelayed(this, 3000);
             }
         }, 3000);
     }

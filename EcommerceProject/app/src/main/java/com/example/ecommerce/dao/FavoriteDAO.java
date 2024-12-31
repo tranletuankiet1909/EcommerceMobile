@@ -22,6 +22,46 @@ public class FavoriteDAO {
         this.context = context;
         dbHelper = new DatabaseHelper(context);
     }
+    public List<Favorite> getWishList() {
+        List<Favorite> wishlist = new ArrayList<>();
+        String[] columns = {
+                DatabaseHelper.COLUMN_FAV_ID,
+                DatabaseHelper.COLUMN_FAV_BUYER_ID,
+                DatabaseHelper.COLUMN_FAV_PRODUCT_ID
+        };
+
+        Cursor cursor = database.query(
+                DatabaseHelper.TABLE_FAVORITE,
+                columns,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_FAV_ID));
+                int productId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_FAV_PRODUCT_ID));
+                int userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_FAV_BUYER_ID));
+                UserDAO userDAO = new UserDAO(this.context);
+                userDAO.open();
+                User buyer = userDAO.getUserById(userId);
+                userDAO.close();
+
+                ProductDAO productDAO = new ProductDAO(this.context);
+                productDAO.open();
+                Product product = productDAO.getProductById(productId);
+                productDAO.close();
+
+                Favorite favorite = new Favorite(id, buyer, product);
+                wishlist.add(favorite);
+            }
+            cursor.close();
+        }
+        this.close();
+        return wishlist;
+    }
 
     public List<Favorite> getWishListByUserId(int userId) {
         List<Favorite> wishlist = new ArrayList<>();
@@ -82,7 +122,7 @@ public class FavoriteDAO {
         return result != -1;
     }
 
-    public boolean deleteProductFromWishList(int buyerId, int productId) {
+    public boolean deleteProductFromWishList(int productId, int buyerId) {
         String selection = DatabaseHelper.COLUMN_FAV_BUYER_ID + " = ? AND " + DatabaseHelper.COLUMN_FAV_PRODUCT_ID + " = ?";
 
         String[] selectionArgs = {String.valueOf(buyerId), String.valueOf(productId)};

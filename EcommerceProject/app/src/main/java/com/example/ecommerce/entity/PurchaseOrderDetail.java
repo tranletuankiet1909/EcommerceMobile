@@ -1,20 +1,28 @@
 package com.example.ecommerce.entity;
 
+import android.net.wifi.aware.PublishConfig;
+
 public class PurchaseOrderDetail {
     private int id;
     private int quantity;
     private String price;
-    private User buyer;
+    private Product product;
     private PurchaseOrder purchaseOrder;
 
     public PurchaseOrderDetail() {
     }
 
-    public PurchaseOrderDetail(int id, int quantity, String price, User buyer, PurchaseOrder purchaseOrder) {
+    public PurchaseOrderDetail(int id, int quantity, String price, Product product, PurchaseOrder purchaseOrder) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
-        this.buyer = buyer;
+        this.product = product;
+        this.purchaseOrder = purchaseOrder;
+    }
+    public PurchaseOrderDetail(int quantity, String price, Product product, PurchaseOrder purchaseOrder) {
+        this.quantity = quantity;
+        this.price = price;
+        this.product = product;
         this.purchaseOrder = purchaseOrder;
     }
 
@@ -42,12 +50,12 @@ public class PurchaseOrderDetail {
         this.price = price;
     }
 
-    public User getBuyer() {
-        return buyer;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public PurchaseOrder getPurchaseOrder() {

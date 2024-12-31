@@ -1,9 +1,10 @@
 package com.example.ecommerce.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class PurchaseOrder {
+public class PurchaseOrder implements Serializable {
     private int id;
     private String totalPrice;
     private String status;
@@ -15,6 +16,13 @@ public class PurchaseOrder {
 
     public PurchaseOrder(int id, String totalPrice, String status, User buyer, Store store) {
         this.id = id;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.buyer = buyer;
+        this.store = store;
+    }
+
+    public PurchaseOrder(String totalPrice, String status, User buyer, Store store) {
         this.totalPrice = totalPrice;
         this.status = status;
         this.buyer = buyer;

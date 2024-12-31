@@ -18,6 +18,13 @@ public class Cart {
         this.product = product;
     }
 
+    public Cart(int quantity, Boolean selected, User buyer, Product product) {
+        this.quantity = quantity;
+        this.selected = selected;
+        this.buyer = buyer;
+        this.product = product;
+    }
+
     public int getId() {
         return id;
     }

@@ -14,6 +14,19 @@ public class Invoice {
         this.createdDate = new Date();
         this.purchaseOrder = purchaseOrder;
     }
+    public Invoice(String payMethod, PurchaseOrder purchaseOrder) {
+        this.payMethod = payMethod;
+        this.createdDate = new Date();
+        this.purchaseOrder = purchaseOrder;
+    }
+
+    public Invoice(int id, String payMethod, Date createdDate, PurchaseOrder purchaseOrder) {
+        this.id = id;
+        this.payMethod = payMethod;
+        this.createdDate = createdDate;
+        this.purchaseOrder = purchaseOrder;
+    }
+
 
     public int getId() {
         return id;
